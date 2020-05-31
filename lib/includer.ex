@@ -29,7 +29,16 @@ defmodule Includer do
     case HTTPoison.get("https://manpages.debian.org/buster/manpages-dev/" <> function <> ".3.en.html") do
 
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        body |> Floki.find("pre") |> (fn([{_, _, [ {_, _, [a]} ]}| _]) -> a end).()
+        body |> Floki.parse_document! |> Floki.find("pre") |> (fn([{_, _, a}| _]) -> a end).() |> Enum.map(fn({_, _, [a]}) -> a end)
+
+      {:ok, %HTTPoison.Response{status_code: 302}} ->
+
+        case HTTPoison.get("https://manpages.debian.org/buster/manpages-dev/" <> function <> ".2.en.html") do
+
+          {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+            body |> Floki.parse_document! |> Floki.find("pre") |> (fn([{_, _, a}| _]) -> a end).() |> Enum.map(fn({_, _, [a]}) -> a end)
+
+        end
 
       {:ok, %HTTPoison.Response{status_code: 404}} ->
         IO.puts "Not found :("
@@ -40,16 +49,22 @@ defmodule Includer do
   end
 
   def findIncludes(functions) do
-    functions |> Enum.map(fn(function) -> getIncludeFromMan(function) end)
+    functions |> Enum.map(fn(function) -> getIncludeFromMan(function) end) |> List.foldr([], &Enum.concat/2)
+
   end
 
   def saveToFile(includes, filename, oldsource) do
-    File.write(filename, Enum.join(includes, "\n") <> "\n\n" <> oldsource)
+    File.write(filename, Enum.join(includes, "\n") <> "\n" <> oldsource)
+    :ok
   end
 
   def run(filename) do
     source = filename |> loadSourceFromFile
+    alreadyIncluded = Regex.scan(~r/#include[ ]*<[A-Za-z\/\.]+>/, source) |> Enum.map(fn([a]) -> a end)
     includes = source |> getFunctionsFromSource |> findIncludes
-    saveToFile(includes, filename, source)
+    includes = includes -- alreadyIncluded
+    includes = includes |> Enum.uniq()
+    if includes != [], do: saveToFile(includes, filename, source)
+    :ok
   end
 end
