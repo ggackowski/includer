@@ -4,12 +4,12 @@ defmodule Includer do
   """
 
   @doc """
-  Hello world.
+  ## SYNOPSIS:
+    Includes missing header files to the top of the C source file by searching linux MAN.
 
-  ## Examples
+  ## USAGE:
+    Includer.run(filename)
 
-      iex> Includer.hello()
-      :world
 
   """
   def loadSourceFromFile(fileName) do
@@ -30,14 +30,32 @@ defmodule Includer do
     case HTTPoison.get("https://manpages.debian.org/buster/manpages-dev/" <> function <> ".3.en.html") do
 
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        body |> Floki.parse_document! |> Floki.find("pre") |> (fn([{_, _, a}| _]) -> a end).() |> Enum.map(fn({_, _, [a]}) -> a end)
+
+        parsedBody = body |> Floki.parse_document! |> Floki.find("#SYNOPSIS ~ pre")
+
+        case parsedBody do
+          [] ->
+            body |> Floki.parse_document! |> Floki.find("#SYNOPSIS ~ b") |> Enum.map(fn({"b", [], [a]}) -> a end)
+
+          [{_, _, a}| _]  ->
+            a |> Enum.map(fn({_, _, [a]}) -> a end)
+        end
 
       {:ok, %HTTPoison.Response{status_code: 302}} ->
 
         case HTTPoison.get("https://manpages.debian.org/buster/manpages-dev/" <> function <> ".2.en.html") do
 
           {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-            body |> Floki.parse_document! |> Floki.find("pre") |> (fn([{_, _, a}| _]) -> a end).() |> Enum.map(fn({_, _, [a]}) -> a end)
+
+            parsedBody = body |> Floki.parse_document! |> Floki.find("#SYNOPSIS ~ pre")
+
+            case parsedBody do
+              [] ->
+                body |> Floki.parse_document! |> Floki.find("#SYNOPSIS ~ b") |> Enum.map(fn({"b", [], [a]}) -> a end)
+
+              [{_, _, a}| _]  ->
+                a |> Enum.map(fn({_, _, [a]}) -> a end)
+            end
 
           {:ok, %HTTPoison.Response{status_code: 302}} ->
             nil

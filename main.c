@@ -1,3 +1,14 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <err.h>
+#include <stdlib.h>
+#include <err.h>
+#include <stdio.h>
+#include <string.h>
+#include <pthread.h>
+#include <unistd.h>
+#include <time.h>
 
 
 #define new(Type) calloc(1, sizeof(Type))

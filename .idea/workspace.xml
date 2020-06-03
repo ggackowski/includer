@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0ce7777-3c4e-4314-ab60-caa9e3975831" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/includer.CLI.ex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/includer.ex" beforeDir="false" afterPath="$PROJECT_DIR$/lib/includer.ex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mix.exs" beforeDir="false" afterPath="$PROJECT_DIR$/mix.exs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.c" beforeDir="false" afterPath="$PROJECT_DIR$/program.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,5 +44,15 @@
       <updated>1590673232901</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="691" y="346" width="530" height="385" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591184052492">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="691" y="346" width="530" height="385" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1591184052492" />
+    <state x="623" y="248" key="run.anything.popup" timestamp="1591172580877">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="248" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1591172580877" />
   </component>
 </project>
