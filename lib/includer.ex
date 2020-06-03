@@ -26,6 +26,7 @@ defmodule Includer do
   end
 
   def getIncludeFromMan(function) do
+    IO.puts(function <> "\n")
     case HTTPoison.get("https://manpages.debian.org/buster/manpages-dev/" <> function <> ".3.en.html") do
 
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
@@ -38,6 +39,8 @@ defmodule Includer do
           {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
             body |> Floki.parse_document! |> Floki.find("pre") |> (fn([{_, _, a}| _]) -> a end).() |> Enum.map(fn({_, _, [a]}) -> a end)
 
+          {:ok, %HTTPoison.Response{status_code: 302}} ->
+            nil
         end
 
       {:ok, %HTTPoison.Response{status_code: 404}} ->
@@ -49,7 +52,7 @@ defmodule Includer do
   end
 
   def findIncludes(functions) do
-    functions |> Enum.map(fn(function) -> getIncludeFromMan(function) end) |> List.foldr([], &Enum.concat/2)
+    functions |> Enum.map(fn(function) -> getIncludeFromMan(function) end) |> Enum.filter(fn(x) -> x != nil end) |> List.foldr([], &Enum.concat/2)
 
   end
 

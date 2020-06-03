@@ -2,27 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0ce7777-3c4e-4314-ab60-caa9e3975831" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/certifi.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/dialyxir.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/earmark.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/ex_doc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/exjsx.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/hackney.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/html_entities.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/httparrot.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/idna.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/metrics.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mimerl.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mimic.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/parse_trans.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/ssl_verify_fun.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/unicode_util_compat.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/floki.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/floki.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/httpoison.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/httpoison.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/includer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/includer.ex" beforeDir="false" afterPath="$PROJECT_DIR$/lib/includer.ex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program.c" beforeDir="false" afterPath="$PROJECT_DIR$/program.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

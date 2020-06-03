@@ -4,6 +4,9 @@
 #include <fcntl.h>
 #include <math.h>
 #include <stdlib.h>
+int xd() {
+    
+}
 
 
 int main() {
